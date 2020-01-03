@@ -101,9 +101,44 @@ p.then((data)=>{
 
 
 
+#### 原生JS中的类、静态方法、继承
 
+##### ES5中的实例方法和静态方法
 
+```shell
+function Person(name,age){
+	//构造函数中的方法和属性
+	this.name = name;
+	this.age = age;
+	this.run = function(){
+		console.log(`${this.name}---${this.age}`)
+	}
+}
 
+//原型链上的属性和方法；可以被多个实例共享
+Person.prototype.sex = 'boy';
+Person.prototype.work = function(){
+	console.log(`${this.name}---${this.age}---${this.sex}`)
+}
+
+//静态方法
+Person.setName = function(){
+	console.log('static function')
+}
+
+//实例方法是通过实例化来调用的；静态方法是通过类名直接调用
+var p = new Person('smileyqp',18);
+p.run();
+p.work()
+
+Person.setName();	//执行静态方法
+```
+
+#### ES5中的继承
+
+```shell
+
+```
 
 
 
