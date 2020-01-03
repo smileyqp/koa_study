@@ -41,12 +41,55 @@
   })
   ```
 
-  
-
-- 错误处理中间件
+- ##### 错误处理中间件
 
   ```shell
-  
+  //三：错误处理中间件
+  app.use(async(ctx,next)=>{
+    console.log('这是一个错误处理中间件')
+      next();
+      if(ctx.status == 404){
+          ctx.status = 404;
+          ctx.body = '页面找不到'
+      }else{
+          console.log(ctx.url)
+      }
+  })
   ```
-
   
+  > 注意：执行方式是先console出`这是一个错误处理中间件`；然后继续往下匹配路由执行next()的操作；最后执行完返回执行判断`ctx.status==404`里面的
+
+- ##### 第三方中间件
+
+#### koaz中间件的执行流程（洋葱模型图）
+
+```shell
+ //匹配所有路由
+app.use(async(ctx,next)=> {
+    console.log(new Date());
+    console.log('1、这是第一个中间件')
+    await next();      
+    console.log('5、这是第一个中间件的next下面')
+})
+
+app.use(async(ctx,next)=>{
+    console.log('2、这是第二个中间件')
+    console.log('这是一个错误处理中间件')
+    next();
+    console.log('4、这是第二个中间件的next下面')
+})
+
+router.get('/test',async(ctx,next)=>{
+    console.log('3、匹配到test路由')
+    ctx.body = 'test';
+})
+
+//访问`http://localhost:3002/test`
+//执行结果
+1、这是第一个中间件
+2、这是第二个中间件
+3、匹配到test路由
+4、这是第二个中间件的next下面
+5、这是第一个中间件的next下面
+```
+

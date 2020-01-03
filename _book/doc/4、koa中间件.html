@@ -244,14 +244,55 @@ router.get(&apos;/new&apos;,async(ctx,next)=&gt;{
 })
 </code></pre>
 </li>
-</ul>
-<ul>
-<li><p>&#x9519;&#x8BEF;&#x5904;&#x7406;&#x4E2D;&#x95F4;&#x4EF6;</p>
-<pre><code class="lang-shell">
-
+<li><h5 id="&#x9519;&#x8BEF;&#x5904;&#x7406;&#x4E2D;&#x95F4;&#x4EF6;">&#x9519;&#x8BEF;&#x5904;&#x7406;&#x4E2D;&#x95F4;&#x4EF6;</h5>
+<pre><code class="lang-shell">//&#x4E09;&#xFF1A;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x4E2D;&#x95F4;&#x4EF6;
+app.use(async(ctx,next)=&gt;{
+  console.log(&apos;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x4E2D;&#x95F4;&#x4EF6;&apos;)
+    next();
+    if(ctx.status == 404){
+        ctx.status = 404;
+        ctx.body = &apos;&#x9875;&#x9762;&#x627E;&#x4E0D;&#x5230;&apos;
+    }else{
+        console.log(ctx.url)
+    }
+})
 </code></pre>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x6267;&#x884C;&#x65B9;&#x5F0F;&#x662F;&#x5148;console&#x51FA;<code>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x4E2D;&#x95F4;&#x4EF6;</code>&#xFF1B;&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x5F80;&#x4E0B;&#x5339;&#x914D;&#x8DEF;&#x7531;&#x6267;&#x884C;next()&#x7684;&#x64CD;&#x4F5C;&#xFF1B;&#x6700;&#x540E;&#x6267;&#x884C;&#x5B8C;&#x8FD4;&#x56DE;&#x6267;&#x884C;&#x5224;&#x65AD;<code>ctx.status==404</code>&#x91CC;&#x9762;&#x7684;</p>
+</blockquote>
+</li>
+<li><h5 id="&#x7B2C;&#x4E09;&#x65B9;&#x4E2D;&#x95F4;&#x4EF6;">&#x7B2C;&#x4E09;&#x65B9;&#x4E2D;&#x95F4;&#x4EF6;</h5>
 </li>
 </ul>
+<h4 id="koaz&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF08;&#x6D0B;&#x8471;&#x6A21;&#x578B;&#x56FE;&#xFF09;">koaz&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF08;&#x6D0B;&#x8471;&#x6A21;&#x578B;&#x56FE;&#xFF09;</h4>
+<pre><code class="lang-shell"> //&#x5339;&#x914D;&#x6240;&#x6709;&#x8DEF;&#x7531;
+app.use(async(ctx,next)=&gt; {
+    console.log(new Date());
+    console.log(&apos;1&#x3001;&#x8FD9;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&apos;)
+    await next();      
+    console.log(&apos;5&#x3001;&#x8FD9;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;next&#x4E0B;&#x9762;&apos;)
+})
+
+app.use(async(ctx,next)=&gt;{
+    console.log(&apos;2&#x3001;&#x8FD9;&#x662F;&#x7B2C;&#x4E8C;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&apos;)
+    console.log(&apos;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x4E2D;&#x95F4;&#x4EF6;&apos;)
+    next();
+    console.log(&apos;4&#x3001;&#x8FD9;&#x662F;&#x7B2C;&#x4E8C;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;next&#x4E0B;&#x9762;&apos;)
+})
+
+router.get(&apos;/test&apos;,async(ctx,next)=&gt;{
+    console.log(&apos;3&#x3001;&#x5339;&#x914D;&#x5230;test&#x8DEF;&#x7531;&apos;)
+    ctx.body = &apos;test&apos;;
+})
+
+//&#x8BBF;&#x95EE;`http://localhost:3002/test`
+//&#x6267;&#x884C;&#x7ED3;&#x679C;
+1&#x3001;&#x8FD9;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;
+2&#x3001;&#x8FD9;&#x662F;&#x7B2C;&#x4E8C;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;
+3&#x3001;&#x5339;&#x914D;&#x5230;test&#x8DEF;&#x7531;
+4&#x3001;&#x8FD9;&#x662F;&#x7B2C;&#x4E8C;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;next&#x4E0B;&#x9762;
+5&#x3001;&#x8FD9;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;next&#x4E0B;&#x9762;
+</code></pre>
 
                                 
                                 </section>
@@ -291,7 +332,7 @@ router.get(&apos;/new&apos;,async(ctx,next)=&gt;{
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4、koa中间件","level":"1.1.4","depth":2,"previous":{"title":"3、koa路由","level":"1.1.3","depth":2,"path":"doc/3、koa路由.md","ref":"doc/3、koa路由.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"doc/4、koa中间件.md","mtime":"2020-01-03T06:25:21.848Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-03T06:25:50.875Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4、koa中间件","level":"1.1.4","depth":2,"previous":{"title":"3、koa路由","level":"1.1.3","depth":2,"path":"doc/3、koa路由.md","ref":"doc/3、koa路由.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"doc/4、koa中间件.md","mtime":"2020-01-03T07:16:33.794Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-03T06:57:03.820Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
