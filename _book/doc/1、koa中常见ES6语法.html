@@ -343,6 +343,39 @@ p.then((data)=&gt;{
     console.log(data);        //smileyqp
 })
 </code></pre>
+<h4 id="&#x539F;&#x751F;js&#x4E2D;&#x7684;&#x7C7B;&#x3001;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x3001;&#x7EE7;&#x627F;">&#x539F;&#x751F;JS&#x4E2D;&#x7684;&#x7C7B;&#x3001;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x3001;&#x7EE7;&#x627F;</h4>
+<h5 id="es5&#x4E2D;&#x7684;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;">ES5&#x4E2D;&#x7684;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;</h5>
+<pre><code class="lang-shell">function Person(name,age){
+    //&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x548C;&#x5C5E;&#x6027;
+    this.name = name;
+    this.age = age;
+    this.run = function(){
+        console.log(`${this.name}---${this.age}`)
+    }
+}
+
+//&#x539F;&#x578B;&#x94FE;&#x4E0A;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#xFF1B;&#x53EF;&#x4EE5;&#x88AB;&#x591A;&#x4E2A;&#x5B9E;&#x4F8B;&#x5171;&#x4EAB;
+Person.prototype.sex = &apos;boy&apos;;
+Person.prototype.work = function(){
+    console.log(`${this.name}---${this.age}---${this.sex}`)
+}
+
+//&#x9759;&#x6001;&#x65B9;&#x6CD5;
+Person.setName = function(){
+    console.log(&apos;static function&apos;)
+}
+
+//&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x662F;&#x901A;&#x8FC7;&#x5B9E;&#x4F8B;&#x5316;&#x6765;&#x8C03;&#x7528;&#x7684;&#xFF1B;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x662F;&#x901A;&#x8FC7;&#x7C7B;&#x540D;&#x76F4;&#x63A5;&#x8C03;&#x7528;
+var p = new Person(&apos;smileyqp&apos;,18);
+p.run();
+p.work()
+
+Person.setName();    //&#x6267;&#x884C;&#x9759;&#x6001;&#x65B9;&#x6CD5;
+</code></pre>
+<h4 id="es5&#x4E2D;&#x7684;&#x7EE7;&#x627F;">ES5&#x4E2D;&#x7684;&#x7EE7;&#x627F;</h4>
+<pre><code class="lang-shell">
+
+</code></pre>
 
                                 
                                 </section>
@@ -386,7 +419,7 @@ p.then((data)=&gt;{
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1、koa中常见ES6语法","level":"1.1.1","depth":2,"next":{"title":"2、async和await（ES7）","level":"1.1.2","depth":2,"path":"doc/2、async和await（ES7）.md","ref":"doc/2、async和await（ES7）.md","articles":[]},"previous":{"title":"Koa Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[{"title":"1、koa中常见ES6语法","level":"1.1.1","depth":2,"path":"doc/1、koa中常见ES6语法.md","ref":"doc/1、koa中常见ES6语法.md","articles":[]},{"title":"2、async和await（ES7）","level":"1.1.2","depth":2,"path":"doc/2、async和await（ES7）.md","ref":"doc/2、async和await（ES7）.md","articles":[]},{"title":"3、koa路由","level":"1.1.3","depth":2,"path":"doc/3、koa路由.md","ref":"doc/3、koa路由.md","articles":[]},{"title":"4、koa中间件","level":"1.1.4","depth":2,"path":"doc/4、koa中间件.md","ref":"doc/4、koa中间件.md","articles":[]},{"title":"5、ejs模板引擎","level":"1.1.5","depth":2,"path":"doc/5、ejs模板引擎.md","ref":"doc/5、ejs模板引擎.md","articles":[]},{"title":"6、koa中Post表单数据","level":"1.1.6","depth":2,"path":"doc/6、koa中Post表单数据.md","ref":"doc/6、koa中Post表单数据.md","articles":[]},{"title":"7、koa中cookie","level":"1.1.7","depth":2,"path":"doc/7、koa中cookie.md","ref":"doc/7、koa中cookie.md","articles":[]},{"title":"8、koa中session","level":"1.1.8","depth":2,"path":"doc/8、koa中session.md","ref":"doc/8、koa中session.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"doc/1、koa中常见ES6语法.md","mtime":"2020-01-03T06:24:53.642Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-03T09:07:07.784Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1、koa中常见ES6语法","level":"1.1.1","depth":2,"next":{"title":"2、async和await（ES7）","level":"1.1.2","depth":2,"path":"doc/2、async和await（ES7）.md","ref":"doc/2、async和await（ES7）.md","articles":[]},"previous":{"title":"Koa Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[{"title":"1、koa中常见ES6语法","level":"1.1.1","depth":2,"path":"doc/1、koa中常见ES6语法.md","ref":"doc/1、koa中常见ES6语法.md","articles":[]},{"title":"2、async和await（ES7）","level":"1.1.2","depth":2,"path":"doc/2、async和await（ES7）.md","ref":"doc/2、async和await（ES7）.md","articles":[]},{"title":"3、koa路由","level":"1.1.3","depth":2,"path":"doc/3、koa路由.md","ref":"doc/3、koa路由.md","articles":[]},{"title":"4、koa中间件","level":"1.1.4","depth":2,"path":"doc/4、koa中间件.md","ref":"doc/4、koa中间件.md","articles":[]},{"title":"5、ejs模板引擎","level":"1.1.5","depth":2,"path":"doc/5、ejs模板引擎.md","ref":"doc/5、ejs模板引擎.md","articles":[]},{"title":"6、koa中Post表单数据","level":"1.1.6","depth":2,"path":"doc/6、koa中Post表单数据.md","ref":"doc/6、koa中Post表单数据.md","articles":[]},{"title":"7、koa中cookie","level":"1.1.7","depth":2,"path":"doc/7、koa中cookie.md","ref":"doc/7、koa中cookie.md","articles":[]},{"title":"8、koa中session","level":"1.1.8","depth":2,"path":"doc/8、koa中session.md","ref":"doc/8、koa中session.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"doc/1、koa中常见ES6语法.md","mtime":"2020-01-03T09:22:35.535Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-03T09:36:20.881Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
